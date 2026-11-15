@@ -1,0 +1,95 @@
+{
+  "organizations": [
+    {
+      "id": "CF06D4E3CB0E",
+      "name": "Benaka Trust",
+      "type": "NGO",
+      "contact": "Savita",
+      "email": "savita867@gmail.com",
+      "phone": "9723677545",
+      "city": "xxx",
+      "people": 5,
+      "latitude": 12.988316323296964,
+      "longitude": 77.54801738078528,
+      "createdAt": "2026-11-15T14:44:00.472Z"
+    },
+    {
+      "id": "1296C7873E8B",
+      "name": "Benaka Trust",
+      "type": "NGO",
+      "contact": "Savita",
+      "email": "Savita845@gmail.com",
+      "phone": "9736282986",
+      "city": "xxx",
+      "people": 6,
+      "latitude": 12.988280014909755,
+      "longitude": 77.54812690426365,
+      "createdAt": "2026-11-15T14:52:24.908Z"
+    }
+  ],
+  "deliveries": [
+    {
+      "code": "B7E2F9AA",
+      "food": "Fresh vegetarian meals",
+      "organization": {
+        "id": "CF06D4E3CB0E",
+        "name": "Benaka Trust",
+        "city": "xxx",
+        "latitude": 12.988316323296964,
+        "longitude": 77.54801738078528
+      },
+      "status": "in_transit",
+      "location": {
+        "latitude": 12.988316323296964,
+        "longitude": 77.54801738078528,
+        "accuracy": 151,
+        "updatedAt": "2026-11-15T14:46:12.126Z"
+      },
+      "createdAt": "2026-11-15T14:44:38.712Z",
+      "updatedAt": "2026-11-15T14:46:12.126Z",
+      "distanceMetres": 0
+    },
+    {
+      "code": "983949FE",
+      "food": "Fresh vegetarian meals",
+      "organization": {
+        "id": "CF06D4E3CB0E",
+        "name": "Benaka Trust",
+        "city": "xxx",
+        "latitude": 12.988316323296964,
+        "longitude": 77.54801738078528
+      },
+      "status": "in_transit",
+      "location": {
+        "latitude": 12.988316323296964,
+        "longitude": 77.54801738078528,
+        "accuracy": 151,
+        "updatedAt": "2026-11-15T14:52:33.448Z"
+      },
+      "createdAt": "2026-11-15T14:46:44.922Z",
+      "updatedAt": "2026-11-15T14:52:33.448Z",
+      "distanceMetres": 0
+    },
+    {
+      "code": "AD481D14",
+      "food": "Fresh vegetarian meals",
+      "organization": {
+        "id": "1296C7873E8B",
+        "name": "Benaka Trust",
+        "city": "xxx",
+        "latitude": 12.988280014909755,
+        "longitude": 77.54812690426365
+      },
+      "status": "delivered",
+      "location": {
+        "latitude": 12.98832450471188,
+        "longitude": 77.54803644401899,
+        "accuracy": 149,
+        "updatedAt": "2026-11-15T14:53:41.218Z"
+      },
+      "createdAt": "2026-11-15T14:52:35.913Z",
+      "updatedAt": "2026-11-15T14:53:52.872Z",
+      "distanceMetres": 11
+    }
+  ]
+}

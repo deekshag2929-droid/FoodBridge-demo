@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FoodBridge connects surplus food with NGOs, hostels, orphanages and old-age homes.">
+  <title>FoodBridge India — Good food, shared well</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#home">🥣 Food<span>Bridge</span></a>
+      <button class="menu-button" id="menuButton" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav id="navLinks">
+        <a href="#food">Find food</a>
+        <a href="#how">How it works</a>
+        <a href="#register">Organisation portal</a>
+        <a href="#tracking">Track delivery</a>
+      </nav>
+      <a class="button button-green nav-button" href="#register">Register organisation</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">A community food-sharing network</span>
+          <h1>Good food.<br><span>Shared with care.</span></h1>
+          <p>FoodBridge connects surplus food from local businesses with NGOs, hostels, orphanages and old-age homes.</p>
+          <div class="hero-actions">
+            <a class="button button-green" href="#food">Browse available food</a>
+            <a class="button button-light" href="#register">Register your organisation</a>
+          </div>
+          <p class="small-note">Food shared through FoodBridge is intended to be free for registered organisations.</p>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=1100&h=900&fit=crop" alt="A freshly prepared shared meal">
+          <div class="image-label">Good food can go further.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="beneficiaries">
+      <div class="container beneficiary-grid">
+        <div>🏠 <strong>Hostels</strong></div>
+        <div>🤝 <strong>NGOs</strong></div>
+        <div>🧒 <strong>Orphanages</strong></div>
+        <div>💚 <strong>Old-age homes</strong></div>
+      </div>
+    </section>
+
+    <section class="section" id="food">
+      <div class="container">
+        <div class="section-title">
+          <div><span class="eyebrow">Sample listings</span><h2>Food available</h2></div>
+          <p>Register your organisation before requesting a listing.</p>
+        </div>
+
+        <div class="food-grid">
+          <article class="food-card">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&h=500&fit=crop" alt="Fresh vegetables">
+            <div class="food-content">
+              <span class="tag">Fresh produce</span>
+              <h3>Seasonal vegetable boxes</h3>
+              <p>Fresh vegetables from a local market. 8 boxes available.</p>
+              <button class="button button-green request-button" data-food="Seasonal vegetable boxes">Request food</button>
+            </div>
+          </article>
+          <article class="food-card">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=800&h=500&fit=crop" alt="Prepared meal">
+            <div class="food-content">
+              <span class="tag">Prepared meals</span>
+              <h3>Fresh vegetarian meals</h3>
+              <p>Meals prepared today. 12 portions available.</p>
+              <button class="button button-green request-button" data-food="Fresh vegetarian meals">Request food</button>
+            </div>
+          </article>
+          <article class="food-card">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=500&fit=crop" alt="Fresh bread">
+            <div class="food-content">
+              <span class="tag">Bakery</span>
+              <h3>Bread and bakery basket</h3>
+              <p>Fresh bread and baked goods. 15 items available.</p>
+              <button class="button button-green request-button" data-food="Bread and bakery basket">Request food</button>
+            </div>
+          </article>
+        </div>
+        <p class="demo-note">These are sample listings. Add a real food database to manage live inventory.</p>
+      </div>
+    </section>
+
+    <section class="section tracking-section" id="tracking">
+      <div class="container tracking-box">
+        <div>
+          <span class="eyebrow">Live delivery tracking</span>
+          <h2>Track a delivery</h2>
+          <p>Share the tracking code with the delivery person and organisation. Both can enter it here to view live updates.</p>
+          <form id="trackingForm" class="tracking-form">
+            <label for="trackingCode">Delivery tracking code</label>
+            <div class="inline-form">
+              <input id="trackingCode" placeholder="Enter tracking code" autocomplete="off" required>
+              <button class="button button-green" type="submit">Track</button>
+            </div>
+          </form>
+          <p class="code-display" id="createdCode"></p>
+        </div>
+
+        <div class="tracking-status">
+          <div class="status-line"><span class="status-dot"></span><strong id="trackingStatus">No delivery selected</strong></div>
+          <p id="deliveryInfo">Enter a tracking code or request food to begin.</p>
+          <p id="locationText">No GPS location received.</p>
+          <a id="mapLink" class="text-link" href="#" target="_blank" rel="noopener" hidden>Open latest location in map</a>
+          <button class="button button-light" id="startGpsButton" disabled>Start sharing delivery GPS</button>
+          <button class="button button-light" id="stopGpsButton" disabled>Stop GPS sharing</button>
+          <button class="button button-green" id="confirmDeliveredButton" disabled>Confirm delivery</button>
+        </div>
+      </div>
+      <p class="container privacy-note">The delivery person’s browser asks for GPS permission. Location is shared with people who know the tracking code.</p>
+    </section>
+
+    <section class="section how-section" id="how">
+      <div class="container">
+        <span class="eyebrow">Simple steps</span>
+        <h2>How FoodBridge works</h2>
+        <div class="steps">
+          <article><span>01</span><h3>Businesses list food</h3><p>Food donors share details about surplus food and pickup times.</p></article>
+          <article><span>02</span><h3>Organisations register</h3><p>NGOs and care institutions share their contact and location details.</p></article>
+          <article><span>03</span><h3>Track the delivery</h3><p>The delivery person shares GPS and the organisation confirms the handoff.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section register-section" id="register">
+      <div class="container register-grid">
+        <div>
+          <span class="eyebrow">Organisation portal</span>
+          <h2>Register your organisation</h2>
+          <p>NGOs, hostels, orphanages and old-age homes can register to request free food support.</p>
+          <ul>
+            <li>Submit organisation and contact details</li>
+            <li>Save the organisation’s GPS destination</li>
+            <li>Request food and share the tracking code</li>
+          </ul>
+        </div>
+
+        <form class="register-form" id="registrationForm">
+          <label for="orgName">Organisation name</label>
+          <input id="orgName" required placeholder="Organisation name">
+
+          <label for="orgType">Organisation type</label>
+          <select id="orgType" required>
+            <option value="">Select one</option>
+            <option>NGO</option>
+            <option>Hostel</option>
+            <option>Orphanage / children's home</option>
+            <option>Old-age home</option>
+            <option>Other community organisation</option>
+          </select>
+
+          <label for="contactName">Contact person</label>
+          <input id="contactName" required placeholder="Full name">
+
+          <label for="orgEmail">Email</label>
+          <input id="orgEmail" type="email" required placeholder="name@example.com">
+
+          <label for="orgPhone">Phone</label>
+          <input id="orgPhone" type="tel" required placeholder="Phone number">
+
+          <label for="orgCity">City and area</label>
+          <input id="orgCity" required placeholder="City, area, state">
+
+          <label for="peopleCount">People supported</label>
+          <input id="peopleCount" type="number" min="1" required placeholder="Approximate number">
+
+          <div class="destination-box">
+            <strong>Organisation GPS destination</strong>
+            <p>Use a device at the organisation. Allow location access when your browser asks.</p>
+            <button class="button button-light" id="setOrgLocationButton" type="button">Get organisation location</button>
+            <p class="form-note" id="orgLocationMessage">No GPS location captured yet.</p>
+          </div>
+
+          <button class="button button-green form-submit" type="submit">Register organisation</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <a class="brand footer-brand" href="#home">🥣 Food<span>Bridge</span></a>
+      <p>Helping good food reach people and communities.</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
