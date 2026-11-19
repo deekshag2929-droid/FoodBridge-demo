@@ -82,6 +82,34 @@ app.post("/api/organizations", (req, res) => {
   res.status(201).json({ organization });
 });
 
+app.post("/api/animal-food-offers", (req, res) => {
+  const { donorName, donorContact, foodType, amount, bestBefore, pickupArea, notes } = req.body;
+
+  if (!donorName || !donorContact || !foodType || !amount || !pickupArea) {
+    return res.status(400).json({ error: "Please complete your name, contact, food, amount, and pickup area." });
+  }
+
+  const offer = {
+    reference: makeId(8),
+    donorName: String(donorName).trim().slice(0, 100),
+    donorContact: String(donorContact).trim().slice(0, 120),
+    foodType: String(foodType).trim().slice(0, 80),
+    amount: String(amount).trim().slice(0, 120),
+    bestBefore: bestBefore ? String(bestBefore).slice(0, 10) : null,
+    pickupArea: String(pickupArea).trim().slice(0, 160),
+    notes: String(notes || "").trim().slice(0, 500),
+    status: "offered",
+    createdAt: new Date().toISOString()
+  };
+
+  const data = readData();
+  data.animalFoodOffers = data.animalFoodOffers || [];
+  data.animalFoodOffers.push(offer);
+  writeData(data);
+
+  res.status(201).json({ offer: { reference: offer.reference, status: offer.status } });
+});
+
 app.get("/api/organizations", (req, res) => {
   const data = readData();
   res.json(data.organizations.map(({ id, name, type, city }) => ({ id, name, type, city })));
