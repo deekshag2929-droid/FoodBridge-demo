@@ -4,6 +4,7 @@ const toast = document.getElementById("toast");
 const registrationForm = document.getElementById("registrationForm");
 const trackingForm = document.getElementById("trackingForm");
 const trackingCodeInput = document.getElementById("trackingCode");
+const animalDonationForm = document.getElementById("animalDonationForm");
 
 const trackingStatus = document.getElementById("trackingStatus");
 const deliveryInfo = document.getElementById("deliveryInfo");
@@ -103,6 +104,35 @@ async function postJson(url, body) {
 
   return result;
 }
+
+animalDonationForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const submitButton = animalDonationForm.querySelector('button[type="submit"]');
+  const message = document.getElementById("animalDonationMessage");
+  submitButton.disabled = true;
+  message.textContent = "Sending your offer…";
+
+  try {
+    const result = await postJson("/api/animal-food-offers", {
+      donorName: document.getElementById("donorName").value.trim(),
+      donorContact: document.getElementById("donorContact").value.trim(),
+      foodType: document.getElementById("animalFoodType").value,
+      amount: document.getElementById("animalFoodAmount").value.trim(),
+      bestBefore: document.getElementById("animalFoodExpiry").value,
+      pickupArea: document.getElementById("animalPickupArea").value.trim(),
+      notes: document.getElementById("animalFoodNotes").value.trim()
+    });
+
+    animalDonationForm.reset();
+    message.textContent = `Offer received. Reference: ${result.offer.reference}. The FoodBridge team can use your contact details to coordinate with a shelter.`;
+    showToast("Your animal food donation offer was received.");
+  } catch (error) {
+    message.textContent = error.message;
+    showToast(error.message);
+  } finally {
+    submitButton.disabled = false;
+  }
+});
 
 // Capture the organisation's location before registration.
 document.getElementById("setOrgLocationButton").addEventListener("click", () => {

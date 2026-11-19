@@ -19,6 +19,7 @@
       <button class="menu-button" id="menuButton" aria-label="Toggle menu" aria-expanded="false">☰</button>
       <nav id="navLinks">
         <a href="#food">Find food</a>
+        <a href="#animal-donations">Animal shelters</a>
         <a href="#how">How it works</a>
         <a href="#register">Organisation portal</a>
         <a href="#tracking">Track delivery</a>
@@ -93,6 +94,52 @@
           </article>
         </div>
         <p class="demo-note">These are sample listings. Add a real food database to manage live inventory.</p>
+      </div>
+    </section>
+
+    <section class="section animal-section" id="animal-donations">
+      <div class="container animal-grid">
+        <div class="animal-copy">
+          <span class="eyebrow">A little help for paws</span>
+          <h2>Share food with animal rescue shelters</h2>
+          <p>Have unopened pet food or suitable surplus food to spare? Tell us what you can offer and where it can be collected. FoodBridge can connect the offer with a nearby rescue shelter.</p>
+          <div class="animal-guidance">
+            <strong>Food safety comes first</strong>
+            <p>Please offer sealed pet food or clearly labelled, unspoiled food. Include expiry dates and ingredients when available. Shelters should confirm that food is suitable for the animals in their care.</p>
+          </div>
+        </div>
+
+        <form class="register-form animal-form" id="animalDonationForm">
+          <label for="donorName">Your name</label>
+          <input id="donorName" name="donorName" required maxlength="100" placeholder="Full name">
+
+          <label for="donorContact">Phone or email</label>
+          <input id="donorContact" name="donorContact" required maxlength="120" placeholder="How a shelter can reach you">
+
+          <label for="animalFoodType">Food you can donate</label>
+          <select id="animalFoodType" name="foodType" required>
+            <option value="">Select food type</option>
+            <option>Sealed pet food</option>
+            <option>Unopened animal feed</option>
+            <option>Fresh produce</option>
+            <option>Other suitable surplus food</option>
+          </select>
+
+          <label for="animalFoodAmount">Amount and packaging</label>
+          <input id="animalFoodAmount" name="amount" required maxlength="120" placeholder="e.g. 5 sealed 1 kg bags">
+
+          <label for="animalFoodExpiry">Expiry or best-before date</label>
+          <input id="animalFoodExpiry" name="bestBefore" type="date">
+
+          <label for="animalPickupArea">Pickup area</label>
+          <input id="animalPickupArea" name="pickupArea" required maxlength="160" placeholder="City and neighbourhood">
+
+          <label for="animalFoodNotes">Food details (optional)</label>
+          <textarea id="animalFoodNotes" name="notes" rows="3" maxlength="500" placeholder="Ingredients, dietary notes, or pickup timing"></textarea>
+
+          <button class="button button-green form-submit" type="submit">Offer food to a rescue shelter</button>
+          <p class="form-note" id="animalDonationMessage" role="status" aria-live="polite">Submitting an offer lets the FoodBridge team coordinate a shelter match.</p>
+        </form>
       </div>
     </section>
 

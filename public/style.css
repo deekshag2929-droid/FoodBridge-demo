@@ -248,6 +248,41 @@ nav a:hover { color: var(--green); }
   font-size: 10px;
 }
 
+.animal-section { background: #f1f2e9; }
+
+.animal-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.animal-copy h2 {
+  max-width: 470px;
+  margin: 16px 0;
+  font: 800 38px/1.15 Manrope, sans-serif;
+  letter-spacing: -1.2px;
+}
+
+.animal-copy > p,
+.animal-guidance p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.animal-guidance {
+  margin-top: 25px;
+  padding: 18px;
+  border-left: 3px solid var(--saffron);
+  border-radius: 0 12px 12px 0;
+  background: #fffdf8;
+}
+
+.animal-guidance strong { font-size: 13px; }
+.animal-guidance p { margin: 8px 0 0; font-size: 11px; }
+.animal-form textarea { resize: vertical; }
+
 .tracking-section { padding-top: 10px; }
 
 .tracking-box {
@@ -449,7 +484,7 @@ footer {
   }
   nav.open { display: flex; }
   .hero { padding: 45px 0; }
-  .hero-grid, .tracking-box, .register-grid { grid-template-columns: 1fr; }
+  .hero-grid, .tracking-box, .register-grid, .animal-grid { grid-template-columns: 1fr; }
   .hero-image { height: 280px; }
   .beneficiary-grid { grid-template-columns: repeat(2, 1fr); }
   .section { padding: 55px 0; }
@@ -457,6 +492,6 @@ footer {
   .section h2 { font-size: 29px; }
   .food-grid, .steps { grid-template-columns: 1fr; }
   .tracking-box { padding: 20px; }
-  .register-grid { gap: 25px; }
+  .register-grid, .animal-grid { gap: 25px; }
   .footer-content { align-items: flex-start; flex-direction: column; gap: 5px; }
 }
